@@ -2,7 +2,7 @@ library(GenomicRanges)
 library(Rsamtools)
 library(Biostrings)
 
-editing.sites <- read.table("data/Human_AG_NonRepetitive_hg19.txt", header = TRUE, stringsAsFactors = FALSE)
+editing.sites <- read.table("data/Human_AG_NonRepetitive_hg19_v2.txt", header = TRUE, stringsAsFactors = FALSE)
 editing.sites <- subset(editing.sites, !annot1 %in% c("intergenic", "intronic") & chromosome %in% paste0("chr", as.character(1:22)))
 editing.sites$chromosome <- gsub(pattern = "chr", editing.sites$chromosome, replacement = "")
 editing.sites <- editing.sites[ order(as.numeric(editing.sites$chromosome), editing.sites$position), ]

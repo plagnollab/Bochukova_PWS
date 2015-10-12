@@ -1,0 +1,1 @@
+wget http://web.stanford.edu/~gokulr/database/Human_AG_NonRepetitive_hg19.txt

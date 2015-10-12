@@ -1,0 +1,7 @@
+sample f1 f2 condition
+Sample_KO1 Sample_KO1/KO1_TGACCA_L005_R1_001.fastq.gz Sample_KO1/KO1_TGACCA_L005_R2_001.fastq.gz KO
+Sample_KO2 Sample_KO2/KO2_ACAGTG_L005_R1_001.fastq.gz Sample_KO2/KO2_ACAGTG_L005_R2_001.fastq.gz KO
+Sample_KO3 Sample_KO3/KO3_GCCAAT_L005_R1_001.fastq.gz Sample_KO3/KO3_GCCAAT_L005_R2_001.fastq.gz KO
+Sample_WT1 Sample_WT1/WT1_ATCACG_L005_R1_001.fastq.gz Sample_WT1/WT1_ATCACG_L005_R2_001.fastq.gz WT
+Sample_WT2 Sample_WT2/WT2_CGATGT_L005_R1_001.fastq.gz Sample_WT2/WT2_CGATGT_L005_R2_001.fastq.gz WT
+Sample_WT3 Sample_WT3/WT3_TTAGGC_L005_R1_001.fastq.gz Sample_WT3/WT3_TTAGGC_L005_R2_001.fastq.gz WT

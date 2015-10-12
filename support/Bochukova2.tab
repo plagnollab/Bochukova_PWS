@@ -1,0 +1,7 @@
+sample f1 f2 condition
+KO1 EB-KO1_R1.cat.fastq.gz EB-KO1_R2.cat.fastq.gz KO
+KO2 EB-KO2_R1.cat.fastq.gz EB-KO2_R2.cat.fastq.gz KO
+KO3 EB-KO6_R1.cat.fastq.gz EB-KO6_R2.cat.fastq.gz KO
+WT3 EB-WT3_R1.cat.fastq.gz EB-WT3_R2.cat.fastq.gz WT
+WT6 EB-WT6_R1.cat.fastq.gz EB-WT6_R2.cat.fastq.gz WT
+WT7 EB-WT7_R1.cat.fastq.gz EB-WT7_R2.cat.fastq.gz WT

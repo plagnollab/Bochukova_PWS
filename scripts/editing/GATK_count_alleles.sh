@@ -31,6 +31,7 @@ tail -n +2  /scratch2/vyp-scratch2/Bochukova_RNASeq/processed/set3/Bochukova_set
 	-o data/ASE/${sample}.tab \
 	-I $BAM \
 	-sites:VCF $VCF \
+	-minDepth 0 \
 	-U ALLOW_N_CIGAR_READS
     
 done

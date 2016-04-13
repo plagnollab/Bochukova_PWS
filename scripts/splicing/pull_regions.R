@@ -12,10 +12,10 @@ data <- data[ !is.na(data$strand), ]
 tab.n.exons.5pc <- table(subset(data, FDR < 0.1)$external_gene_id)
 tab.n.exons.1pc <- subset(data, FDR < 0.01)$external_gene_id
 
-good.genes <- names(which(tab.n.exons == 1))
-v.good.genes <- intersect( good.genes, tab.n.exons.1pc)
+good.genes <- names(which(tab.n.exons.5pc == 1))  ## good genes have a SINGLE exon with FDR < 5%
+v.good.genes <- intersect( good.genes, tab.n.exons.1pc)  ## they also have at least 1 exon with FDR < 1%
 
-
+## below the table we trust
 sig.data <- data[ data$external_gene_id %in% v.good.genes & !is.na(data$external_gene_id) & (data$FDR < 0.01) & !is.na(data$FDR), ]
 
 
@@ -26,6 +26,7 @@ my.grange <- GenomicRanges::GRanges(sig.data$chromosome[1:nseqs], IRanges(sig.da
 
 seq <- getSeq(fa, my.grange)
 
+## now we work with the orientation to make it all consistent
 seq.orientated <- ifelse (sig.data$strand[ 1:nseqs ] == 1, as.character(seq), as.character(Biostrings::reverseComplement(seq)))
 seq.orientated <- DNAStringSet(seq.orientated)
 names(seq.orientated) <- paste0(sig.data$external_gene_id[ 1:nseqs], "_", 1:length(seq.orientated))

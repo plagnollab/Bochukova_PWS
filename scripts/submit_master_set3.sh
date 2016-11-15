@@ -7,12 +7,12 @@ export RNASEQBUNDLE=$RNASEQBUNDLE
 pipeline=${RNASEQPIPBASE}/RNAseq_pipeline_v8.sh
 
 #############
-submit=no
+submit=yes
 
 QC=no
-starStep1a=no
-starStep1b=no
-starStep2=no
+starStep1a=yes
+starStep1b=yes
+starStep2=yes
 
 sampleQC=no
 runCufflinks=no
@@ -24,14 +24,11 @@ Rdexseq=no
 
 force=yes
 
-oFolder=/scratch2/vyp-scratch2/Bochukova_RNASeq/processed/set3_hg38
-iFolder=/scratch2/vyp-scratch2/ElenaBochukova
+oFolder=/SAN/biomed/biomed14/vyp-scratch/Bochukova/hg19_UCSC
+iFolder=/cluster/scratch3/vyp-scratch2/Bochukova_RNASeq/fastq/set3
 
-sh $pipeline --starStep1a ${starStep1a} --starStep1b ${starStep1b} --starStep2 ${starStep2} --iFolder ${iFolder} --oFolder ${oFolder} --dataframe Bochukova_PWS/support/Bochukova_set3.tab --code Bochukova_set3 --prepareCounts ${prepareCounts} --Rdexseq ${Rdexseq} --Rdeseq ${Rdeseq} --submit ${submit} --summary ${summary} --species human_hg38 --force ${force}
+sh $pipeline --step0_QC ${QC} --starStep1a ${starStep1a} --starStep1b ${starStep1b} --starStep2 ${starStep2} --iFolder ${iFolder} --oFolder ${oFolder} --dataframe support/Bochukova_set3.tab --code Bochukova_set3 --prepareCounts ${prepareCounts} --Rdexseq ${Rdexseq} --Rdeseq ${Rdeseq} --submit ${submit} --summary ${summary} --species human_hg19_UCSC --force ${force} --trim_galore no
 
-echo $mainscript
-#qsub $mainscript
-    #sh $mainscript
 
 
 

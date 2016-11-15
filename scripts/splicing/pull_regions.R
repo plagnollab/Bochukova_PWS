@@ -19,7 +19,7 @@ v.good.genes <- intersect( good.genes, tab.n.exons.1pc)  ## they also have at le
 sig.data <- data[ data$external_gene_id %in% v.good.genes & !is.na(data$external_gene_id) & (data$FDR < 0.01) & !is.na(data$FDR), ]
 
 
-nseqs <- 280
+nseqs <- min(280, nrow(sig.data))
 my.width <- 220
 my.grange <- GenomicRanges::GRanges(sig.data$chromosome[1:nseqs], IRanges(sig.data$exon.start[1:nseqs]- my.width, sig.data$exon.end[1:nseqs]+my.width))
 

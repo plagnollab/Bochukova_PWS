@@ -14,5 +14,6 @@ all.genes <- data.frame(gene = unique(exons.sig$external_gene_id))
 all.genes$signif <- all.genes$gene %in% exons.sig$external_gene_id[ exons.sig$FDR < 0.01 ]
 all.genes$SNO.target <- all.genes$gene %in% targets$Gene.name
 
+write.csv(x = all.genes, row.names = FALSE, file = "splicing_SNORD116.csv")
 
 print(fisher.test(table(all.genes$signif, all.genes$SNO.target)))

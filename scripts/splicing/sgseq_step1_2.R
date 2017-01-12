@@ -1,25 +1,38 @@
 library(SGSeq) 
 
-#tx <- importTranscripts("/cluster/scratch3/vyp-scratch2/reference_datasets/RNASeq/Human_hg38/Homo_sapiens.GRCh38.82_fixed.gtf") 
-#txf <- convertToTxFeatures(tx) 
-#sgf <- convertToSGFeatures(txf) 
+step1 <- FALSE
+step2 <- FALSE
+step3 <- FALSE
 
-#save(tx, txf, sgf, file = "/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/tx.Rdata") 
-load("/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/tx.Rdata") 
 
-#sample.tab <- read.table("/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/Bochukova_set3_info.tab", header = T, stringsAsFactor = F) 
-support <- read.table("/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/Bochukova_set3.tab", header = T, stringsAsFactor = F) 
-#sample.info <- getBamInfo(sample.tab) 
-#save(sample.info, file = "/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/Bochukova_set3_info.RData") 
-load("/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/Bochukova_set3_info.RData") 
+if (step1) {
+  tx <- importTranscripts("/cluster/scratch3/vyp-scratch2/reference_datasets/RNASeq/Human_hg38/Homo_sapiens.GRCh38.82_fixed.gtf") 
+  txf <- convertToTxFeatures(tx) 
+  sgf <- convertToSGFeatures(txf) 
+  save(tx, txf, sgf, file = "data/tx.Rdata")
+} else {
+  if (step3) load("data/tx.Rdata") 
+}
 
-#for testing only 
-#chr22 <- GRanges(seqnames = "chr22")
-#sgf_chr <- sgf[seqnames(sgf) == "chr22"]
-#sgfc <- analyzeFeatures(sample.info, features = sgf)
+if (step2) {
+  sample.tab <- read.table("/SAN/biomed/biomed14/vyp-scratch/Bochukova/hg38_kitty/Bochukova_set3_info.tab", header = T, stringsAsFactor = F) 
+  support <- read.table("/SAN/biomed/biomed14/vyp-scratch/Bochukova/hg38_kitty/Bochukova_set3.tab", header = T, stringsAsFactor = F) 
+  sample.info <- getBamInfo(sample.tab)
+  save(sample.info, file = "data/Bochukova_set3_info.RData")
+} else {
+  if (step3) load("data/Bochukova_set3_info.RData")
+}
 
-#save(sgfc, file = "/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/sgfc.RData") 
-load("/SAN/biomed/biomed14/vyp-scratch/Bochukova_realigned/sgfc.RData") 
+
+if (step3) {
+  ##for testing only 
+  ##chr22 <- GRanges(seqnames = "chr22")
+  ##sgf_chr <- sgf[seqnames(sgf) == "chr22"]
+  sgfc <- analyzeFeatures(sample.info, features = sgf)
+  save(sgfc, file = "data/Bochukova_realigned/sgfc.RData") 
+} else {
+  load("data/sgfc.RData")
+}
 #sgvc_pred <- analyzeVariants(sgfc, min_denominator = 10)
 #sgvc <- getSGVariantCounts(rowRanges(sgvc_pred), sample_info = sample.info, features = sgf ) 
 

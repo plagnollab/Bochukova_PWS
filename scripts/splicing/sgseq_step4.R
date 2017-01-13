@@ -4,13 +4,15 @@ load("data/tx.Rdata")
 load("data/Bochukova_set3_info.RData")
 load("data/Bochukova_realigned/sgfc.RData")
 
-prep <- TRUE
+support <- read.table("/SAN/biomed/biomed14/vyp-scratch/Bochukova/hg38_kitty/Bochukova_set3.tab", header = T, stringsAsFactor = F) 
+
+prep <- FALSE
 if (prep) {
   sgvc_pred <- analyzeVariants(sgfc, min_denominator = 10)
   sgvc <- getSGVariantCounts(rowRanges(sgvc_pred), sample_info = sample.info, features = sgf ) 
-  save(sgvc_pred, sgvc, file = "Bochukova_realigned/sgfc_pred.RData") 
+  save(sgvc_pred, sgvc, file = "data/Bochukova_realigned/sgfc_pred.RData") 
 } else {
-  load("Bochukova_realigned/sgfc_pred.RData")
+  load("data/Bochukova_realigned/sgfc_pred.RData")
 }
 
 
@@ -38,7 +40,7 @@ DexSeqExons.loc <- DEXSeq::estimateDispersions(DexSeqExons.loc)
 DexSeqExons.loc <- DEXSeq::testForDEU(DexSeqExons.loc) 
 DexSeqExons.loc <- DEXSeq::estimateExonFoldChanges(DexSeqExons.loc) 
 
-save(DexSeqExons.loc, file = "Bochukova_realigned/dexseq.RData") 
+save(DexSeqExons.loc, file = "data/Bochukova_realigned/dexseq.RData") 
 
 
 res <- DEXSeq::DEXSeqResults (DexSeqExons.loc)

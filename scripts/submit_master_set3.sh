@@ -19,15 +19,15 @@ runCufflinks=no
 
 summary=no
 prepareCounts=no
-Rdeseq=yes
+Rdeseq=no
 Rdexseq=no
 
-force=yes
+force=no
 
-oFolder=/SAN/biomed/biomed14/vyp-scratch/Bochukova/hg19_UCSC
+oFolder=/SAN/biomed/biomed14/vyp-scratch/Bochukova/hg38_kitty
 iFolder=/cluster/scratch3/vyp-scratch2/Bochukova_RNASeq/fastq/set3
 
-sh $pipeline --step0_QC ${QC} --starStep1a ${starStep1a} --starStep1b ${starStep1b} --starStep2 ${starStep2} --iFolder ${iFolder} --oFolder ${oFolder} --dataframe support/Bochukova_set3.tab --code Bochukova_set3 --prepareCounts ${prepareCounts} --Rdexseq ${Rdexseq} --Rdeseq ${Rdeseq} --submit ${submit} --summary ${summary} --species human_hg19_UCSC --force ${force} --trim_galore no
+sh $pipeline --step0_QC ${QC} --starStep1a ${starStep1a} --starStep1b ${starStep1b} --starStep2 ${starStep2} --iFolder ${iFolder} --oFolder ${oFolder} --dataframe support/Bochukova_set3.tab --code Bochukova_set3 --prepareCounts ${prepareCounts} --Rdexseq ${Rdexseq} --Rdeseq ${Rdeseq} --submit ${submit} --summary ${summary} --species human_hg38 --force ${force} --trim_galore no
 
 
 

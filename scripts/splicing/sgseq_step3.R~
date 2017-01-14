@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+library(SGSeq) 
+
+
+load("data/tx.Rdata")
+load("data/Bochukova_set3_info.RData")
+
+sgfc <- analyzeFeatures(sample.info, features = sgf)
+save(sgfc, file = "data/Bochukova_realigned/sgfc.RData") 
